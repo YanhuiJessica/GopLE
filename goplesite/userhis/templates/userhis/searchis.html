@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GopLE</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <style>
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            font-size: large;
+        }
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+        .container {
+            max-width: 100%;
+        }
+        * {box-sizing: border-box;}
+        body{margin: 0;}
+        div.search {padding: 30px 0}
+        form {
+        position: relative;
+        width: 300px;
+        margin: 0 auto;
+        }
+        .d7:after {content:""; clear:both; display:table}
+        .d7 form {
+        width: auto;
+        float: right;
+        margin-right: 30px;
+        }
+        .d7 input {
+        width: 500px;
+        height: 42px;
+        padding-left: 15px;
+        border-radius: 42px;
+        border: 2px solid #324b4e;
+        background: white;
+        outline: none;
+        position: relative;
+        transition: .3s linear;
+        }
+        .d7 input:focus {
+        outline: none;
+        }
+        .d7 button {
+        width: 42px;
+        height: 42px;
+        background: none;
+        border: none;
+        position: absolute;
+        top: -2px;
+        right: 0;
+        }
+        .d7 button:before{
+        content: "\f002";
+        font-family: FontAwesome;
+        color: #324b4e;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+        <center>
+            <div style="max-width: 500px; align-content: center;">
+                {% load static %}
+                <img src="{% static "userhis/logo.png" %}" alt="logo">
+            </div>
+            <div class="search d7">
+                <form>
+                    <input type="text" placeholder="输入用户 ID 查看观看历史...">
+                    <button type="submit"></button>
+                </form>
+            </div>
+        </center>
+    </div>
+</body>
+</html>
