@@ -1,4 +1,6 @@
-![](logo.png)
+
+<img src="logo.png" width=550px>
+
 # Current Plan👿
 
 ## 需求分析🧐
