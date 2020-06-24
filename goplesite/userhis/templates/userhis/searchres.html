@@ -24,8 +24,8 @@
         .d7:after {content:""; clear:both; display:table}
         .d7 form {
         width: auto;
-        float: right;
-        margin-right: 30px;
+        float: left;
+        margin-left: 20px;
         }
         .d7 input {
         width: 492px;
@@ -47,7 +47,6 @@
         background: none;
         border: none;
         position: absolute;
-        top: -2px;
         right: 0;
         }
         .d7 button:before{
@@ -58,22 +57,32 @@
     </style>
 </head>
 <body>
-	<div class="container" style="padding-top: 150px;">
-        <center>
-            <div class="col-md-offset-3 col-md-6">
-                <span class="heading" style="float: right; margin: 20px 78px;">
+	<div class="container" style="padding-top: 20px;">
+            <div class="row">
+                <span class="heading col-sm" style="float: left;">
                     {% load static %}
-                    <img src="{% static 'userhis/gople-history.png' %}" alt="logo">
+                    <img src="{% static 'userhis/gople-history.png' %}" alt="logo" width="184px">
                 </span>
-                <div class="form-group search d7">
+                <span class="form-group search d7 col-sm">
                     <form class="form-horizontal" action="{% url 'userhis:search' %}" method="post">
                         {% csrf_token %}
-                        {{ form }}
+                        {{ form.user_id }}
                         <button type="submit"></button>
                     </form>
-                </div>
+                </span>
             </div>
-        </center>
+            <hr>
+            {% if form.user_id.errors %}
+            <div class="container">
+                <label>您的输入不合法，用户 ID 应当为纯数字。</label><br><br>
+                <label>Error List:</label>
+                <ul>
+                    {% for error in form.user_id.errors %}
+                        <li><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
     </div>
 </body>
 </html>
