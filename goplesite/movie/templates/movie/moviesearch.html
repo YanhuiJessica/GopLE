@@ -7,9 +7,8 @@
 	<title>GopLE</title>
     <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<!--[if IE]>
-		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
-    <![endif]-->
+    {% load static %}
+    <link href="{% static 'movie/Multi-Column-Select.css' %}" rel="stylesheet">
     <style>
         * {box-sizing: border-box;}
         body{margin: 0;}
@@ -61,17 +60,39 @@
             <div class="col-md-offset-3 col-md-6">
                 <span class="heading" style="float: right; margin: 20px 78px;">
                     {% load static %}
-                    <img src="{% static 'userhis/gople-history.png' %}" alt="logo">
+                    <img src="{% static 'movie/gople-movie.png' %}" alt="logo">
                 </span>
                 <div class="form-group search d7">
-                    <form class="form-horizontal" action="{% url 'userhis:search' %}" method="post">
+                    <form class="form-horizontal" action="{% url 'movie:search' %}" method="post">
                         {% csrf_token %}
-                        {{ form }}
+                        {{ form.keyword }}
                         <button type="submit"></button>
+                        <div id="selectcontrol">
+                            {{ form.style }}
+                        </div>
                     </form>
                 </div>
             </div>
         </center>
     </div>
+
+    {% load static %}
+    <script src="{% static 'movie/jquery-2.1.1.min.js' %}"></script>
+    <script src="{% static 'movie/Multi-Column-Select.min.js' %}"></script>
+    <script>
+    $(document).ready(function(){
+        $('#selectcontrol').MultiColumnSelect({
+            menuclass : 'mcs',
+            openmenuClass : 'mcs-open',
+            openmenuText : '筛选电影风格…',
+            containerClass : 'mcs-container',
+            itemClass : 'mcs-item',
+            duration : 200,
+            onOpen : function(){},
+            onClose : function(){},
+            onItemSelect : function(){}
+        });
+    });
+    </script>
 </body>
 </html>
