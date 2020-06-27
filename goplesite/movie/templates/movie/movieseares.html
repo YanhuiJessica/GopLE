@@ -94,6 +94,8 @@
                     <form class="form-horizontal" action="{% url 'movie:search' %}" method="post">
                         {% csrf_token %}
                         {{ form.keyword }}
+                        {{ form.movie }}
+
                         <button type="submit"></button>
                     </form>
                 </span>
