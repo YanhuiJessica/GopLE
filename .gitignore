@@ -1,3 +1,4 @@
 venv-gople/
 __pycache__/
 .vscode/
+./goplesite/db.sqlite3
