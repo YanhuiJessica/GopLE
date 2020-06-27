@@ -51,6 +51,36 @@
         font-family: FontAwesome;
         color: #324b4e;
         }
+        .ah-tab-wrapper {
+            position: relative;
+        }
+        .ah-tab {
+            border-bottom: 1px solid #ebebeb;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+            letter-spacing: -0.3em;
+        }
+        .ah-tab-item {
+            color: #8b8b8b;
+            cursor: pointer;
+            display: inline-block;
+            letter-spacing: normal;
+            transition: all .3s;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .ah-tab>.ah-tab-item {
+            border-bottom: 3px solid transparent;
+            margin-right: 30px;
+            padding: 10px 0;
+        }
+        .ah-tab-item[data-ah-tab-active="true"] {
+            color: #215393;
+        }
+        .ah-tab>.ah-tab-item[data-ah-tab-active="true"] {
+            border-bottom-color: #215393;
+        }
     </style>
 </head>
 <body>
@@ -71,7 +101,13 @@
                     {{ form.style }}
                 </span>
             </div>
-            <hr>
+            <div class="ah-tab-wrapper">
+                <div class="ah-tab">
+                    <a class="ah-tab-item" href="{% url 'recommend:index' %}">首    页</a>
+                    <a class="ah-tab-item" href="{% url 'userhis:index' %}">历史记录</a>
+                    <a class="ah-tab-item" href="" data-ah-tab-active="true">电影检索</a>
+                </div>
+            </div>
             {% if form.user_id.errors %}
             <div class="container">
                 <label>Error List:</label>
