@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GopLE</title>
+    <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css' />
+    <style>
+        * {box-sizing: border-box;}
+        body{margin: 0;}
+        .switch {
+        margin: 10px auto;
+        position: relative;
+        }
+        .switch label {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: block;
+        }
+        .switch input {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 100;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        }
+        .switch.demo3 {
+        width: 150px;
+        height: 35px;
+        }
+        .switch.demo3 label {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: pink;
+        border-radius: 40px;
+        box-shadow:
+            inset 0 3px 8px 1px rgba(0,0,0,0.2),
+            0 1px 0 rgba(255,255,255,0.5);
+        }
+        .switch.demo3 label:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -8px; right: -8px; bottom: -8px; left: -8px;
+        border-radius: inherit;
+        background: #ababab;
+        background: -moz-linear-gradient(#f2f2f2, #ababab);
+        background: -ms-linear-gradient(#f2f2f2, #ababab);
+        background: -o-linear-gradient(#f2f2f2, #ababab);
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f2f2), to(#ababab));
+        background: -webkit-linear-gradient(#f2f2f2, #ababab);
+        background: linear-gradient(#f2f2f2, #ababab);
+        box-shadow: 0 0 10px rgba(0,0,0,0.3),
+                0 1px 1px rgba(0,0,0,0.25);
+        }
+        .switch.demo3 label:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        border-radius: inherit;
+        background: #eee;
+        background: -moz-linear-gradient(#e5e7e6, #eee);
+        background: -ms-linear-gradient(#e5e7e6, #eee);
+        background: -o-linear-gradient(#e5e7e6, #eee);
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#e5e7e6), to(#eee));
+        background: -webkit-linear-gradient(#e5e7e6, #eee);
+        background: linear-gradient(#e5e7e6, #eee);
+        box-shadow:
+            0 1px 0 rgba(255,255,255,0.5);
+        -webkit-filter: blur(1px);
+        -moz-filter: blur(1px);
+        -ms-filter: blur(1px);
+        -o-filter: blur(1px);
+        filter: blur(1px);
+        }
+        .switch.demo3 label i {
+        display: block;
+        height: 100%;
+        width: 60%;
+        border-radius: inherit;
+        background: silver;
+        position: absolute;
+        z-index: 2;
+        right: 40%;
+        top: 0;
+        background: #b2ac9e;
+        background: -moz-linear-gradient(#f7f2f6, #b2ac9e);
+        background: -ms-linear-gradient(#f7f2f6, #b2ac9e);
+        background: -o-linear-gradient(#f7f2f6, #b2ac9e);
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#f7f2f6), to(#b2ac9e));
+        background: -webkit-linear-gradient(#f7f2f6, #b2ac9e);
+        background: linear-gradient(#f7f2f6, #b2ac9e);
+        box-shadow:
+            inset 0 1px 0 white,
+            0 0 8px rgba(0,0,0,0.3),
+            0 5px 5px rgba(0,0,0,0.2);
+        }
+        .switch.demo3 label i:after {
+        content: "";
+        position: absolute;
+        left: 15%;
+        top: 25%;
+        width: 70%;
+        height: 50%;
+        background: #d2cbc3;
+        background: -moz-linear-gradient(#cbc7bc, #d2cbc3);
+        background: -ms-linear-gradient(#cbc7bc, #d2cbc3);
+        background: -o-linear-gradient(#cbc7bc, #d2cbc3);
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#cbc7bc), to(#d2cbc3));
+        background: -webkit-linear-gradient(#cbc7bc, #d2cbc3);
+        background: linear-gradient(#cbc7bc, #d2cbc3);
+        border-radius: inherit;
+        }
+        .switch.demo3 label i:before {
+        content: "♀";
+        text-transform: uppercase;
+        font-style: normal;
+        font-weight: bold;
+        color: rgba(0,0,0,0.4);
+        text-shadow: 0 1px 0 #bcb8ae, 0 -1px 0 #97958e;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 24px;
+        position: absolute;
+        top: 40%;
+        margin-top: -12px;
+        right: -40%;
+        }
+        .switch.demo3 input:checked ~ label {
+        background: skyblue;
+        }
+        .switch.demo3 input:checked ~ label i {
+        right: -1%;
+        }
+        .switch.demo3 input:checked ~ label i:before {
+        content: "♂";
+        right: 115%;
+        color: #617fc0;
+        text-shadow:
+            0 1px 0 #9baacb,
+            0 -1px 0 #596086;
+        }
+    </style>
+</head>
+<body>
+	<div class="container" style="padding-top: 20px;">
+            <div class="row">
+                <span class="heading col-sm" style="float: left;">
+                    {% load static %}
+                    <img src="{% static 'recommend/gople-recommend.png' %}" alt="logo" width="368px">
+                </span>
+                <span style="float: right;">
+                    <form name="change_gender" action="{% url 'recommend:change_gender' %}" method="POST">
+                       {% csrf_token %}
+                       <div class="switch demo3">
+                            <a href="javascript:document.change_gender.submit();">{{ form }}
+                            <label><i></i></label></a>
+                        </div>
+                    </form>
+                </span>
+            </div>
+            <hr>
+            {% if gender == 'male' %}
+                <p>男</p>
+            {% else %}
+                <p>女</p>
+            {% endif %}
+    </div>
+
+</body>
+</html>
