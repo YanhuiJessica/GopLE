@@ -9,8 +9,10 @@
     <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	{% load static %}
     <link href="{% static 'movie/Multi-Column-Select.css' %}" rel="stylesheet">
+    <link href="{% static 'movie/movie-info.css' %}" rel="stylesheet">
     <style>
         * {box-sizing: border-box;}
+        html{font-size: 16px;}
         body{margin: 0;}
         div.search {padding: 30px 0}
         form {
@@ -120,6 +122,29 @@
                 </ul>
             </div>
             {% endif %}
+            <div class="container" style="padding-top: 10px;">
+                <section class="aui-scrollView">
+                    <div class="tab-panel">
+                        <div class="tab-panel-item tab-active">
+                            <div class="aui-flex b-line">
+                                <div class="aui-film-img">
+                                    <img src="https://image.tmdb.org/t/p/w500/9PCsWrw1GvrZkrd1GCxRqscgZu0.jpg">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <h1>紫紫快跑！</h1>
+                                    <h2>电影评分 <em>9.5</em></h2>
+                                    <h3>类型：哈哈哈</h3>
+                                    <span class="b-line">
+                                        <em>tag1</em>
+                                        <em>tag2</em>
+                                        <em>tag3</em>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
     </div>
 
     {% load static %}
