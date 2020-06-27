@@ -14,6 +14,7 @@ def search(request):
         if form.is_valid():
             keyword = form.cleaned_data['keyword']
             style = form.cleaned_data['style']
+        return HttpResponseRedirect(reverse('movie:results'))
     return render(request, 'movie/movieseares.html', {'form': form})
 
 def results(request):
