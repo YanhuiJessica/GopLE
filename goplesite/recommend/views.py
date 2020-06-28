@@ -56,7 +56,7 @@ def index(request):
         movie_res = Movies.objects(movieId__in=movieIds)
         for m in movie_res:
             print(m.title)
-    return render(request, 'recommend/index.html', {'form': form, 'gender': gender, 'movies':movies})
+    return render(request, 'recommend/index.html', {'form': form, 'gender': gender, 'movies':movie_res})
 
 def change_gender(request):
     if request.method == 'POST':
