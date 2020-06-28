@@ -116,26 +116,13 @@
                 </ul>
             </div>
             {% endif %}
-                 <div class="container">
+            <div class="container">
                 {{ user.name }}
                 {{user.userId}}
-
-        </div>
-    {% for m,m2 in movies %} 
-            <div class="container">
-
-        {{ m.title }}
-                {{ m2.rating }}
-{{m2.timestamp}}
             </div>
-
-
-{% endfor %}
-       
-
-
             <div class="container" style="padding-top: 10px;">
                 <section class="aui-scrollView">
+                    {% for m,m2 in movies %}
                     <div class="tab-panel">
                         <div class="tab-panel-item tab-active">
                             <div class="aui-flex b-line">
@@ -143,19 +130,26 @@
                                     <img src="https://image.tmdb.org/t/p/w500/9PCsWrw1GvrZkrd1GCxRqscgZu0.jpg">
                                 </div>
                                 <div class="aui-flex-box">
-                                    <h1>紫紫快跑！</h1>
-                                    <h2>电影评分 <em>9.5</em></h2>
-                                    <h3>关联度评分：？？？</h3>
-                                    <h3>上次观看时间：test</h3>
+                                    <h1>{{ m.title }}</h1>
+                                    <h2>电影评分 <em>{{ m2.rating }}</em></h2>
+                                    <h3>上次观看时间：{{m2.timestamp}}</h3>
                                     <span class="b-line">
-                                        <em>tag1</em>
-                                        <em>tag2</em>
-                                        <em>tag3</em>
+                                        {% for t in m.tags %}
+                                        <em>{{ t.tag }}</em>
+                                        {% endfor %}
                                     </span>
+                                    <h3>标签关联度：
+                                        <span class="b-line">
+                                            {% for t in m.tags %}
+                                            <em>{{ t.relevance }}</em>
+                                            {% endfor %}
+                                        </span>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </section>
             </div>
     </div>
