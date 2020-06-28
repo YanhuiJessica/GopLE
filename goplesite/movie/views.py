@@ -23,9 +23,10 @@ def search(request):
             for movie in movies:
                 print(movie.title)
                 print(movie.rating)
-            return HttpResponseRedirect(reverse('movie:results'))
-    return render(request, 'movie/movieseares.html', {'form': form})
+            # return HttpResponseRedirect(reverse('movie:results'))
+            print(movies)
+    return render(request, 'movie/movieseares.html', {'movies': movies})
 
 def results(request):
     form = MovieForm()
-    return render(request, 'movie/movieseares.html', {'form': form})
+    return render(request, 'movie/movieseares.html', {'movies': movies})
