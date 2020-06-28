@@ -11,19 +11,18 @@ def index(request):
 
 def results(request, usrid):
     form = IDForm()
-    return render(request, 'userhis/searchres.html', {'form': form})
+    user_ = Users.objects.filter(userId=usrid)[0]
+    watchedMovies=user_.watchedMovies
+    movieId=[]
+    for movie in watchedMovies:
+            movieId.append(movie.movieId)
+    movies=Movies.objects(movieId__in= movieId)
+    return render(request, 'userhis/searchres.html', {'form': form, 'user': user_, 'movies': zip(movies, watchedMovies)})
 
 def search(request):
     if request.method == 'POST':
         form = IDForm(request.POST)
         if form.is_valid():
             user_id = form.cleaned_data['user_id']
-            print(user_id)
-            user_ = Users.objects.filter(userId=user_id)[0]
-            watchedMovies=user_.watchedMovies
-            movieId=[]
-            for movie in watchedMovies:
-                 movieId.append(movie.movieId)
-            movies=Movies.objects(movieId__in= movieId)
-            # return HttpResponseRedirect(reverse('userhis:results', args=(user_id, )))
-    return render(request, 'userhis/searchres.html',{ 'user':user_,'movies': zip(movies,watchedMovies)})
+            return HttpResponseRedirect(reverse('userhis:results', args=(user_id, )))
+    return render(request, 'userhis/searchres.html', {'form': form})
