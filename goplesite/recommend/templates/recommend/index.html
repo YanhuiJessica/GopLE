@@ -220,8 +220,8 @@
                                     <h1>{{ m.title }}</h1>
                                     <h2>电影评分 <em>
                                         <script type="text/javascript">
-                                        var num = "{{ m.rating }}";
-                                        document.write(parseFloat(num).toFixed(1));
+                                            var num = "{{ m.rating }}";
+                                            document.write(parseFloat(num).toFixed(1));
                                         </script>
                                     </em></h2>
                                     <h3>类型：
@@ -246,44 +246,6 @@
                 </section>
             </div>
     </div>
-                <div class="container" style="padding-top: 10px;">
-                <section class="aui-scrollView">
-                    {% for m in movies %}
-                    <div class="tab-panel">
-                        <div class="tab-panel-item tab-active">
-                            <div class="aui-flex b-line">
-                                <div class="aui-film-img">
-                                    <img src="https://image.tmdb.org/t/p/w500/9PCsWrw1GvrZkrd1GCxRqscgZu0.jpg">
-                                </div>
-                                <div class="aui-flex-box">
-                                    <h1>{{ m.title }}</h1>
-                                    <h2>电影评分 <em>
-                                        <script type="text/javascript">
-                                        var num = "{{ m.rating }}";
-                                        document.write(parseFloat(num).toFixed(1));
-                                        </script>
-                                    </em></h2>
-                                    <h3>类型：
-                                        <span class="b-line" style="display: contents;">
-                                            {% for g in m.genres %}
-                                            <em>{{ g }}</em>
-                                            {% endfor %}
-                                        </span>
-                                    </h3>
-                                    <h3>标签：
-                                    <span class="b-line" style="display: contents;">
-                                        {% for t in m.tags %}
-                                        <em>{{ t.tag }}</em>
-                                        {% endfor %}
-                                    </span>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </section>
-            </div>
 
     <div class="container" style="padding-top: 10px;">                 <section class="aui-scrollView">                     {% for m in movies %}                     <div class="tab-panel">                         <div class="tab-panel-item tab-active">                             <div class="aui-flex b-line">                                 <div class="aui-film-img">                                     <img src="https://image.tmdb.org/t/p/w500/9PCsWrw1GvrZkrd1GCxRqscgZu0.jpg">                                 </div>                                 <div class="aui-flex-box">                                     <h1>{{ m.title }}</h1>                                     <h2>电影评分 <em>                                         <script type="text/javascript">                                         var num = "{{ m.rating }}";                                         document.write(parseFloat(num).toFixed(1));                                         </script>                                     </em></h2>                                     <h3>类型：                                         <span class="b-line" style="display: contents;">                                             {% for g in m.genres %}                                             <em>{{ g }}</em>                                             {% endfor %}                                         </span>                                     </h3>                                     <h3>标签：                                     <span class="b-line" style="display: contents;">                                         {% for t in m.tags %}                                         <em>{{ t.tag }}</em>                                         {% endfor %}                                     </span>                                     </h3>                                 </div>                             </div>                         </div>                     </div>                     {% endfor %}                 </section>             </div>
 
