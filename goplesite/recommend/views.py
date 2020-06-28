@@ -4,7 +4,13 @@ from django.urls import reverse
 
 from .forms import GenderForm
 
+from .models import Users,Movies
+
 def index(request):
+    movie_top = movies = Movies.objects().order_by('-rating')[:30] 
+    for mov in movie_top:
+        print(mov.title)
+        print(mov.rating)
     if 'gender' not in request.session:
         request.session['gender'] = 'male'
     gender = request.session['gender']
