@@ -18,4 +18,4 @@ class Movies(mongoengine.Document):
     imdbId = mongoengine.IntField()
     tmdbId = mongoengine.IntField()
     tags = ListField(EmbeddedDocumentField('Tag'))
-    meta = {'collection': 'movies'}
+    meta = {'collection': 'Movies'}

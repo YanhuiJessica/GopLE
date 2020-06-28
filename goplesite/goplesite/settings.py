@@ -104,7 +104,7 @@ DATABASES = {
 }
 
 from mongoengine import connect
-connect('movies',host="127.0.0.1",port=27017)
+connect('gople',host="127.0.0.1",port=27017)
 #connect('gople')
 
 # Password validation

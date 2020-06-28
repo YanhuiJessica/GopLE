@@ -133,6 +133,8 @@
                                     <h1>{{ m.title }}</h1>
                                     <h2>电影评分 <em>{{ m2.rating }}</em></h2>
                                     <h3>上次观看时间：{{m2.timestamp}}</h3>
+                                    <h3>类型：{{ m.genres }}
+                                    </h3>
                                     <span class="b-line">
                                         {% for t in m.tags %}
                                         <em>{{ t.tag }}</em>

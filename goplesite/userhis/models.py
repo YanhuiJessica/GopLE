@@ -18,7 +18,7 @@ class Users(mongoengine.Document):
     name = mongoengine.StringField(max_length=50)
     gender = mongoengine.StringField(max_length=3) 
     watchedMovies = ListField(EmbeddedDocumentField('watchedMovies'))
-    meta = {'collection': 'users'}
+    meta = {'collection': 'user'}
 
 
 # Create your models here.
@@ -37,5 +37,5 @@ class Movies(mongoengine.Document):
     imdbId = mongoengine.IntField()
     tmdbId = mongoengine.IntField()
     tags = ListField(EmbeddedDocumentField('Tag'))
-    meta = {'collection': 'movies'}
+    meta = {'collection': 'Movies'}
 
