@@ -17,7 +17,6 @@
         div.search {padding: 30px 0}
         form {
         position: relative;
-        width: 300px;
         margin: 0 auto;
         }
         .d7:after {content:""; clear:both; display:table}
@@ -45,8 +44,8 @@
         height: 42px;
         background: none;
         border: none;
-        position: absolute;
-        right: 0;
+        position: relative;
+        right: 9%;
         }
         .d7 button:before{
         content: "\f002";
@@ -88,22 +87,20 @@
 <body>
 	<div class="container" style="padding-top: 20px;">
             <div class="row">
+                <form action="{% url 'movie:search' %}" method="post">
                 <span class="heading col-sm" style="float: left;">
                     {% load static %}
                     <img src="{% static 'movie/gople-movie.png' %}" alt="logo" width="184px">
                 </span>
-                <span class="form-group search d7 col-sm">
-                    <form class="form-horizontal" action="{% url 'movie:search' %}" method="post">
+                <span class="form-group search d7 col-sm" style="float: left; padding-left: 15px;">
                         {% csrf_token %}
                         {{ form.keyword }}
-                        {{ form.movie }}
-
                         <button type="submit"></button>
-                    </form>
                 </span>
-                <span id="selectcontrol">
+                <span class="col-sm" id="selectcontrol">
                     {{ form.style }}
                 </span>
+                </form>
             </div>
             <div class="ah-tab-wrapper">
                 <div class="ah-tab">
@@ -122,18 +119,9 @@
                 </ul>
             </div>
             {% endif %}
-
-                {% for m in movies %}
-            <div class="container">
-
-          {{ m.movieId }}
-        {{ m.title }}
-            </div>
-
-
-{% endfor %}
             <div class="container" style="padding-top: 10px;">
                 <section class="aui-scrollView">
+                    {% for m in movies %}
                     <div class="tab-panel">
                         <div class="tab-panel-item tab-active">
                             <div class="aui-flex b-line">
@@ -141,18 +129,25 @@
                                     <img src="https://image.tmdb.org/t/p/w500/9PCsWrw1GvrZkrd1GCxRqscgZu0.jpg">
                                 </div>
                                 <div class="aui-flex-box">
-                                    <h1>紫紫快跑！</h1>
-                                    <h2>电影评分 <em>9.5</em></h2>
-                                    <h3>类型：哈哈哈</h3>
+                                    <h1>{{ m.title }}</h1>
+                                    <h2>电影评分 <em>{{ m.rating }}</em></h2>
+                                    <h3>类型：
+                                        <span class="b-line">
+                                            {% for g in m.genres %}
+                                            <em>{{ g }}</em>
+                                            {% endfor %}
+                                        </span>
+                                    </h3>
                                     <span class="b-line">
-                                        <em>tag1</em>
-                                        <em>tag2</em>
-                                        <em>tag3</em>
+                                        {% for t in m.tags %}
+                                        <em>{{ t.tag }}</em>
+                                        {% endfor %}
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </section>
             </div>
     </div>
