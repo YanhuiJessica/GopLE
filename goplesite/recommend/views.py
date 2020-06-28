@@ -56,7 +56,7 @@ def index(request):
         movie_res = Movies.objects(movieId__in=movieIds)
         for m in movie_res:
             print(m.title)
-    return render(request, 'recommend/index.html', {'form': form, 'gender': gender, 'movies':movie_res})
+    return render(request, 'recommend/index.html', {'form': form, 'movies':movie_res})
 
 def change_gender(request):
     if request.method == 'POST':
@@ -64,7 +64,6 @@ def change_gender(request):
         if form.is_valid():
             state = form.cleaned_data['gender']
             if state:
-
                 request.session['gender'] = 'male'
             else:
                 request.session['gender'] = 'female'
