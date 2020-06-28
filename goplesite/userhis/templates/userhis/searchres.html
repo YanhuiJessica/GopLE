@@ -133,12 +133,15 @@
                                     <h1>{{ m.title }}</h1>
                                     <h2>电影评分 <em>{{ m2.rating }}</em></h2>
                                     <h3>上次观看时间：{{ m2.timestamp }}</h3>
-                                    <span class="b-line">
+                                    <h3>标签：
+                                        <span class="b-line" style="display: contents;">
                                         {% for t in m.tags %}
                                         <em>{{ t.tag }}</em>
                                         {% endfor %}
                                     </span>
-                                    <h3>标签关联度：<span class="b-line">
+                                    </h3>
+                                    <h3>标签关联度：
+                                        <span class="b-line" style="display: contents;">
                                             {% for t in m.tags %}
                                             <em>{{ t.relevance }}</em>
                                             {% endfor %}
