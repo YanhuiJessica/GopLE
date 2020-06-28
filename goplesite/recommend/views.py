@@ -20,7 +20,6 @@ def index(request):
     if 'gender' not in request.session:
         request.session['gender'] = 'male'
     gender = request.session['gender']
-    #gender = 'male'
     if gender == 'male':
         form = GenderForm(initial={'gender': True})
         array_m = [41,11,15,29,32,9,48,44,30,4,45,26,31,9,21,46,16,1,5,7]
