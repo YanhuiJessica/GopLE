@@ -30,16 +30,12 @@ def key_results(request, keyword):
     form = MovieForm()
     regk = ".*" + keyword + ".*"
     movies = Movies.objects(title=re.compile(regk, re.IGNORECASE)).order_by('-rating')[:30]
-    for movie in movies:
-        print(movie.title)
     return render(request, 'movie/movieseares.html', {'form': form, 'movies': movies})
 
 def style_results(request, style):
     form = MovieForm()
     regs = ".*" + style + ".*"
     movies = Movies.objects(genres=re.compile(regs, re.IGNORECASE)).order_by('-rating')[:30]
-    for movie in movies:
-        print(movie.title)
     return render(request, 'movie/movieseares.html', {'form': form, 'movies': movies})
 
 def results(request, keyword, style):

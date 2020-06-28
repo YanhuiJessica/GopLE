@@ -190,6 +190,14 @@ color: #08acee;
 border-color: #f7912e;
 color: #f7912e;
 }
+.aui-flex-box span em:nth-child(4) {
+border-color: #2ef0f7;
+color: #2ef0f7;
+}
+.aui-flex-box span em:nth-child(5) {
+border-color: #99f72e;
+color: #99f72e;
+}
 .tab-panel-item .b-line:after {
 width: 92%;
 left: 15px;
