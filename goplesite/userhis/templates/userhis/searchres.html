@@ -116,6 +116,24 @@
                 </ul>
             </div>
             {% endif %}
+                 <div class="container">
+                {{ user.name }}
+                {{user.userId}}
+
+        </div>
+    {% for m,m2 in movies %} 
+            <div class="container">
+
+        {{ m.title }}
+                {{ m2.rating }}
+{{m2.timestamp}}
+            </div>
+
+
+{% endfor %}
+       
+
+
             <div class="container" style="padding-top: 10px;">
                 <section class="aui-scrollView">
                     <div class="tab-panel">
