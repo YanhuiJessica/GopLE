@@ -3,13 +3,30 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from .forms import GenderForm
-
-from .models import Users,Movies
+from .models import Users, Movies
 
 import numpy as np
 
 array_f = np.random.randint(50,size=20)
 array_m = np.random.randint(50,size=20)
+
+def get_imgpaths(moviesId):
+    import urllib.request, json
+
+    imgpaths = []
+    for mid in moviesId:
+        try:
+            data = urllib.request.urlopen('https://api.themoviedb.org/3/movie/' + str(mid) + '/images?api_key=93e48491c391483da7b34d5e0e570a9a')
+        except urllib.error.HTTPError as e:
+            imgpaths.append('/9PCsWrw1GvrZkrd1GCxRqscgZu0.jpg')
+            continue
+        data = json.loads(data.read())['backdrops']
+        if len(data):
+            data = data[0]['file_path']
+        else:
+            data = '/9PCsWrw1GvrZkrd1GCxRqscgZu0.jpg'
+        imgpaths.append(data)
+    return imgpaths
 
 def index(request):
     movie_top = movies = Movies.objects().order_by('-rating')[:50]
@@ -33,7 +50,6 @@ def index(request):
                 movieId.append(mov.movieId)
                 #print(mov.rating)
             i = i + 1
-        print(i)
         print(movieId)
         movie_res = Movies.objects(movieId__in=movieId)
         for m in movie_res:
@@ -51,12 +67,11 @@ def index(request):
                 print(mov.rating)
                 movieIds.append(mov.movieId)
             j = j + 1
-        print(j)
         print(movieIds)
         movie_res = Movies.objects(movieId__in=movieIds)
         for m in movie_res:
             print(m.title)
-    return render(request, 'recommend/index.html', {'form': form, 'movies':movie_res})
+    return render(request, 'recommend/index.html', {'form': form, 'movies': zip(movie_res, get_imgpaths(movieIds))})
 
 def change_gender(request):
     if request.method == 'POST':
