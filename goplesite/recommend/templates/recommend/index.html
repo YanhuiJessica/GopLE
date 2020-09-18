@@ -219,12 +219,24 @@
                                 </div>
                                 <div class="aui-flex-box">
                                     <h1>{{ m.title }}</h1>
-                                    <h2>电影评分 <em>
+                                    <h2>综合评分 <em>
                                         <script type="text/javascript">
                                             var num = "{{ m.rating }}";
                                             document.write(parseFloat(num).toFixed(1));
                                         </script>
                                     </em></h2>
+                                    <h3>男性评分 <em>
+                                        <script type="text/javascript">
+                                            var num = "{{ m.mavg }}";
+                                            document.write(parseFloat(num).toFixed(1));
+                                        </script>
+                                    </em></h3>
+                                    <h3>女性评分 <em>
+                                        <script type="text/javascript">
+                                            var num = "{{ m.favg }}";
+                                            document.write(parseFloat(num).toFixed(1));
+                                        </script>
+                                    </em></h3>
                                     <h3>类型：
                                         <span class="b-line" style="display: contents;">
                                             {% for g in m.genres %}

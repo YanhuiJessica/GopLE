@@ -15,6 +15,8 @@ class Movies(mongoengine.Document):
     genres = ListField(StringField(max_length=30))
     votes = mongoengine.IntField()
     rating = mongoengine.FloatField()
+    favg = mongoengine.FloatField()
+    mavg = mongoengine.FloatField()
     imdbId = mongoengine.IntField()
     tmdbId = mongoengine.IntField()
     tags = ListField(EmbeddedDocumentField('Tag'))
